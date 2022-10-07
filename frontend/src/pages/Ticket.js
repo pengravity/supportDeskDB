@@ -1,15 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { toast, Toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 import { FaPlus } from 'react-icons/fa';
 
-import { getTicket, reset, closeTicket } from '../features/tickets/ticketSlice';
-import {
-  getNotes,
-  createNote,
-  reset as notesReset,
-} from '../features/notes/noteSlice';
+import { getTicket, closeTicket } from '../features/tickets/ticketSlice';
+import { getNotes, createNote } from '../features/notes/noteSlice';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import { useEffect, useState } from 'react';
@@ -33,7 +29,7 @@ Modal.setAppElement('#root');
 function Ticket() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [noteText, setNoteText] = useState('');
-  const { ticket, isLoading, isSuccess, isError, message } = useSelector(
+  const { ticket, isLoading, isError, message } = useSelector(
     (state) => state.tickets
   );
 
@@ -42,7 +38,7 @@ function Ticket() {
   );
 
   const navigate = useNavigate();
-  const params = useParams();
+
   const dispatch = useDispatch();
   const { ticketId } = useParams();
 
