@@ -69,9 +69,9 @@ function Ticket() {
         <h2>Notes</h2>
       </header>
 
-      {notes.map((note) => {
-        <NoteItem key={note._id} note={note} />;
-      })}
+      {notes.map((note) => (
+        <NoteItem key={note._id} note={note} />
+      ))}
 
       {ticket.status !== 'closed' && (
         <button onClick={onTicketClose} className='btn btn-block btn-danger'>
